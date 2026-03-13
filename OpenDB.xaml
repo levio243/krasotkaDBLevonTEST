@@ -1,0 +1,107 @@
+﻿<Window x:Class="krasotkaDBLevonTEST.OpenDB"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление базой данных" Height="600" Width="800"
+        Background="#FF0D5C0D" Foreground="White"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#FF1E8449" CornerRadius="10" Padding="20" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock Text="🗃️ Управление таблицами базы данных" 
+                           HorizontalAlignment="Center" 
+                           FontSize="24" FontWeight="Bold" 
+                           Foreground="White"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Кнопки управления таблицами -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="b_client" Content="👥 КЛИЕНТЫ" 
+                    Click="b_client_Click" 
+                    Background="#FF27AE60" 
+                    Foreground="White" 
+                    Margin="10" 
+                    Height="60" 
+                    Width="300"
+                    FontSize="18" 
+                    FontWeight="Bold"
+                    BorderThickness="2"
+                    BorderBrush="#FF2ECC71"
+                    Cursor="Hand"/>
+
+            <Button x:Name="b_typeService" Content="🗂️ ТИПЫ УСЛУГ" 
+                    Click="b_typeService_Click" 
+                    Background="#FF27AE60" 
+                    Foreground="White" 
+                    Margin="10" 
+                    Height="60" 
+                    Width="300"
+                    FontSize="18" 
+                    FontWeight="Bold"
+                    BorderThickness="2"
+                    BorderBrush="#FF2ECC71"
+                    Cursor="Hand"/>
+
+            <Button x:Name="b_master" Content="👨‍💼 МАСТЕРА" 
+                    Click="b_master_Click" 
+                    Background="#FF27AE60" 
+                    Foreground="White" 
+                    Margin="10" 
+                    Height="60" 
+                    Width="300"
+                    FontSize="18" 
+                    FontWeight="Bold"
+                    BorderThickness="2"
+                    BorderBrush="#FF2ECC71"
+                    Cursor="Hand"/>
+
+            <Button x:Name="b_service" Content="💅 УСЛУГИ" 
+                    Click="b_service_Click" 
+                    Background="#FF27AE60" 
+                    Foreground="White" 
+                    Margin="10" 
+                    Height="60" 
+                    Width="300"
+                    FontSize="18" 
+                    FontWeight="Bold"
+                    BorderThickness="2"
+                    BorderBrush="#FF2ECC71"
+                    Cursor="Hand"/>
+
+            <!-- <Button x:Name="b_appoint" Content="📅 ЗАПИСИ" 
+                    Click="b_appoint_Click" 
+                    Background="#FF27AE60" 
+                    Foreground="White" 
+                    Margin="10" 
+                    Height="60" 
+                    Width="300"
+                    FontSize="18" 
+                    FontWeight="Bold"
+                    BorderThickness="2"
+                    BorderBrush="#FF2ECC71"
+                    Cursor="Hand"/>-->
+        </StackPanel>
+
+        <!-- Нижняя панель -->
+        <Border Grid.Row="2" Background="#FF145A32" CornerRadius="10" Padding="15">
+            <Button x:Name="b_returnO" Content="← ВЕРНУТЬСЯ В ГЛАВНОЕ МЕНЮ" 
+                    Click="b_returnO_Click" 
+                    Background="#FF95A5A6" 
+                    Foreground="White" 
+                    Height="40" 
+                    Width="300"
+                    FontSize="14" 
+                    FontWeight="Bold"
+                    BorderThickness="0" 
+                    Cursor="Hand"
+                    HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Window>

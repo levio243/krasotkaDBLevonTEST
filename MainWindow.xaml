@@ -1,0 +1,133 @@
+﻿<Window x:Class="krasotkaDBLevonTEST.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Салон Красоты 'Красотка'" Height="600" Width="1000"
+        Background="#FF0D5C0D" Foreground="White"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с заголовком -->
+        <Border Grid.Row="0" Background="#FF1E8449" Padding="25" Margin="10,10,10,5">
+            <StackPanel>
+                <TextBlock Text="💅 Салон Красоты 'Красотка'" 
+                           HorizontalAlignment="Center" 
+                           FontSize="32" FontWeight="Bold" 
+                           Foreground="White"
+                           TextAlignment="Center"/>
+                <TextBlock Text="Система управления салоном красоты" 
+                           HorizontalAlignment="Center" 
+                           FontSize="18" 
+                           Foreground="White" 
+                           Margin="0,15,0,0"
+                           Opacity="0.9"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Основной контент -->
+        <Grid Grid.Row="1" Margin="20,10,20,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая панель - Управление БД -->
+            <Border Grid.Column="0" Background="#FF1E8449" CornerRadius="10" Padding="20">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="🗃️ Управление базой данных" 
+                               FontSize="22" FontWeight="Bold" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,25"/>
+
+                    <TextBlock Text="Полный доступ ко всем таблицам и данным системы" 
+                               FontSize="14" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,30"
+                               Opacity="0.8"/>
+
+                    <Button x:Name="b_db" Content="📊 ОТКРЫТЬ БАЗУ ДАННЫХ" 
+                            Click="b_db_Click" 
+                            Background="#FF27AE60" 
+                            Foreground="White" 
+                            Margin="0,10" 
+                            Height="60" 
+                            FontSize="18" 
+                            FontWeight="Bold"
+                            BorderThickness="2"
+                            BorderBrush="#FF2ECC71"
+                            Cursor="Hand"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Разделитель -->
+            <Rectangle Grid.Column="1" Fill="#FF27AE60" Width="3" VerticalAlignment="Center" Height="200"/>
+
+            <!-- Правая панель - Оперативное управление -->
+            <Border Grid.Column="2" Background="#FF1E8449" CornerRadius="10" Padding="20">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="👩‍💼 Оперативное управление" 
+                               FontSize="22" FontWeight="Bold" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,25"/>
+
+                    <TextBlock Text="Ежедневная работа с клиентами и записями" 
+                               FontSize="14" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,30"
+                               Opacity="0.8"/>
+
+                    <Button x:Name="b_work" Content="🎯 РЕЖИМ АДМИНИСТРАТОРА" 
+                            Click="b_work_Click" 
+                            Background="#FF27AE60" 
+                            Foreground="White" 
+                            Margin="0,10" 
+                            Height="60" 
+                            FontSize="18" 
+                            FontWeight="Bold"
+                            BorderThickness="2"
+                            BorderBrush="#FF2ECC71"
+                            Cursor="Hand"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Нижняя панель -->
+        <Border Grid.Row="2" Background="#FF145A32" Padding="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="© 2025 Салон Красоты 'Красотка'. Все права защищены." 
+                           FontSize="14" 
+                           Foreground="White" 
+                           VerticalAlignment="Center"
+                           Opacity="0.8"/>
+
+                <Button x:Name="b_exit" Content="🚪 ВЫХОД" 
+                        Grid.Column="1"
+                        Click="b_exit_Click" 
+                        Background="#FFE74C3C" 
+                        Foreground="White" 
+                        Height="40" 
+                        Width="150" 
+                        FontSize="16" 
+                        FontWeight="Bold"
+                        BorderThickness="0" 
+                        Cursor="Hand"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

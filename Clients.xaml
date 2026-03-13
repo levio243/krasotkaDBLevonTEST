@@ -1,0 +1,166 @@
+﻿<Window x:Class="krasotkaDBLevonTEST.Clients"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление клиентами" Height="900" Width="902"
+        Background="#FF0D5C0D" Foreground="White"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#FF1E8449" CornerRadius="10" Padding="20" Margin="0,0,0,15">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="👥 Управление клиентами"
+                         FontSize="24" FontWeight="Bold"
+                         Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Основной контент -->
+        <Grid Grid.Row="1" Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Таблица клиентов -->
+            <DataGrid x:Name="clientsGrid" Grid.Column="0" Margin="0,0,15,0"
+                     AutoGenerateColumns="False"
+                     Background="White"
+                     Foreground="Black"
+                     BorderBrush="#FF27AE60"
+                     HeadersVisibility="Column"
+                     IsReadOnly="True"
+                     SelectionMode="Single"
+                     SelectionUnit="FullRow"
+                     SelectionChanged="ClientsGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="🔢 Код" Binding="{Binding ClientCode}" Width="80" Foreground="Black"/>
+                    <DataGridTextColumn Header="👤 Имя" Binding="{Binding ClientName}" Width="*" Foreground="Black"/>
+                    <DataGridTextColumn Header="📞 Телефон" Binding="{Binding ClientTel}" Width="150" Foreground="Black"/>
+                    <DataGridTextColumn Header="✅ Активность" Binding="{Binding ClientActivity}" Width="100" Foreground="Black"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Панель управления -->
+            <Border Grid.Column="1" Background="#FF145A32" CornerRadius="10" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Действия с клиентами"
+                             FontSize="16" FontWeight="Bold"
+                             Foreground="White" HorizontalAlignment="Center"
+                             Margin="0,0,0,20"/>
+
+                    <!-- Поиск -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="🔍 Поиск:"
+                                 Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="searchTextBox" FontSize="14" Padding="8"
+                                Background="White" Foreground="Black" BorderThickness="1"
+                                BorderBrush="#FF27AE60"
+                                ToolTip="Введите имя или телефон клиента"/>
+                        <Button x:Name="searchButton" Content="НАЙТИ"
+                               Click="SearchButton_Click"
+                               Background="#FF9B59B6" Foreground="White"
+                               Margin="0,8,0,0" Padding="10,5"
+                               FontSize="12" FontWeight="Bold"
+                               BorderThickness="0" Cursor="Hand"/>
+                    </StackPanel>
+
+                    <!-- Поля ввода -->
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="Код клиента:" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="codeTextBox" FontSize="14" Padding="8" Margin="0,0,0,10"
+                                Background="White" Foreground="Black" BorderThickness="1"
+                                BorderBrush="#FF27AE60" IsReadOnly="True"/>
+
+                        <TextBlock Text="Имя клиента:" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="nameTextBox" FontSize="14" Padding="8" Margin="0,0,0,10"
+                                Background="White" Foreground="Black" BorderThickness="1"
+                                BorderBrush="#FF27AE60"/>
+
+                        <TextBlock Text="Телефон:" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="phoneTextBox" FontSize="14" Padding="8" Margin="0,0,0,10"
+                                Background="White" Foreground="Black" BorderThickness="1"
+                                BorderBrush="#FF27AE60"/>
+
+                        <TextBlock Text="Активность:" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <ComboBox x:Name="activityComboBox" FontSize="14" Padding="8" Margin="0,0,0,15"
+                                 Background="White" Foreground="Black" BorderThickness="1"
+                                 BorderBrush="#FF27AE60">
+                            <ComboBoxItem Content="да" IsSelected="True"/>
+                            <ComboBoxItem Content="нет"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Кнопки управления -->
+                    <StackPanel>
+                        <Button x:Name="addButton" Content="➕ ДОБАВИТЬ"
+                               Click="AddButton_Click"
+                               Background="#FF27AE60" Foreground="White"
+                               Margin="0,5" Padding="12,8"
+                               FontSize="14" FontWeight="Bold"
+                               BorderThickness="0" Cursor="Hand"/>
+
+                        <Button x:Name="editButton" Content="✏️ ИЗМЕНИТЬ"
+                               Click="EditButton_Click"
+                               Background="#FF27AE60" Foreground="White"
+                               Margin="0,5" Padding="12,8"
+                               FontSize="14" FontWeight="Bold"
+                               BorderThickness="0" Cursor="Hand"/>
+
+                        <Button x:Name="deleteButton" Content="🗑️ УДАЛИТЬ"
+                               Click="DeleteButton_Click"
+                               Background="#FFE74C3C" Foreground="White"
+                               Margin="0,5" Padding="12,8"
+                               FontSize="14" FontWeight="Bold"
+                               BorderThickness="0" Cursor="Hand"/>
+
+                        <Button x:Name="activateButton" Content="✅ АКТИВИРОВАТЬ"
+                               Click="ActivateButton_Click"
+                               Background="#FF2ECC71" Foreground="White"
+                               Margin="0,5" Padding="12,8"
+                               FontSize="14" FontWeight="Bold"
+                               BorderThickness="0" Cursor="Hand"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Нижняя панель -->
+        <Border Grid.Row="2" Background="#FF145A32" CornerRadius="10" Padding="15">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="showActiveButton" Content="👁️ ПОКАЗАТЬ АКТИВНЫХ"
+                       Click="ShowActiveButton_Click"
+                       Background="#FF3498DB" Foreground="White"
+                       Margin="5" Padding="15,8"
+                       FontSize="14" FontWeight="Bold"
+                       BorderThickness="0" Cursor="Hand"/>
+
+                <Button x:Name="showAllButton" Content="👁️ ПОКАЗАТЬ ВСЕХ КЛИЕНТОВ"
+                       Click="ShowAllButton_Click"
+                       Background="#FF3498DB" Foreground="White"
+                       Margin="5" Padding="15,8"
+                       FontSize="14" FontWeight="Bold"
+                       BorderThickness="0" Cursor="Hand"/>
+
+                <Button x:Name="refreshButton" Content="🔄 ОБНОВИТЬ ДАННЫЕ"
+                       Click="RefreshButton_Click"
+                       Background="#FF3498DB" Foreground="White"
+                       Margin="5" Padding="15,8"
+                       FontSize="14" FontWeight="Bold"
+                       BorderThickness="0" Cursor="Hand"/>
+
+                <Button x:Name="returnButton" Content="← ВЕРНУТЬСЯ"
+                       Click="ReturnButton_Click"
+                       Background="#FF95A5A6" Foreground="White"
+                       Margin="5" Padding="15,8"
+                       FontSize="14" FontWeight="Bold"
+                       BorderThickness="0" Cursor="Hand"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
